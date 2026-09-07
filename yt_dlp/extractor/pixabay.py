@@ -54,7 +54,7 @@ class PixabaySoundMusicIE(PixabayBaseIE):
         {
             'url': 'https://pixabay.com/sound-effects/musical-relaxing-guitar-loop-v5-245859/',
             'info_dict': {
-                'id': '537751',
+                'id': '245859',
                 'ext': 'mp3',
                 'description': 'md5:64136651e70263d7fc965fe8a0d61435',
                 'title': 'Relaxing Guitar Loop V5 by IdoBerg| Royalty-free Music',
