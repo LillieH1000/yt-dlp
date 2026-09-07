@@ -24,9 +24,11 @@ class PixabayBaseIE(InfoExtractor):
             'title': ('title', {str}),
         })
 
-class PixabayMusicIE(PixabayBaseIE):
-    _VALID_URL = r'https?://(?:www\.)?pixabay\.com/music/(?:[^/?#]+-)?(?P<id>\d+)'
-    _TESTS = [{
+class PixabaySoundMusicIE(PixabayBaseIE):
+    _VALID_URL = r'https?://(?:www\.)?pixabay\.com/(?:music|sound-effects)/(?:[^/?#]+-)?(?P<id>\d+)'
+    _TESTS = [
+    # Music
+    {
         'url': 'https://pixabay.com/music/future-bass-no-copyright-music-537751/',
         'info_dict': {
             'id': '537751',
@@ -34,6 +36,27 @@ class PixabayMusicIE(PixabayBaseIE):
             'thumbnail': r're:^https?://.*\(?:png|jpg)',
             'description': 'md5:45435d2ca9aba2167f98c8ed61ec105a',
             'title': 'No Copyright Music by SigmaMusicArt| Royalty-free Music',
+        },
+    },
+    # Sound Effect
+    {
+        'url': 'https://pixabay.com/sound-effects/film-special-effects-calm-inspiring-technology-logo-short-version-518993/',
+        'info_dict': {
+            'id': '518993',
+            'ext': 'mp3',
+            'thumbnail': r're:^https?://.*\(?:png|jpg)',
+            'description': 'md5:9d3ae9314a08fa7c1ebfef797abd5068',
+            'title': 'Calm Inspiring Technology Logo (Short Version) by AleXZavesa| Royalty-free Music',
+        },
+    },
+    # Sound Effect - no thumbnail
+    {
+        'url': 'https://pixabay.com/sound-effects/musical-relaxing-guitar-loop-v5-245859/',
+        'info_dict': {
+            'id': '537751',
+            'ext': 'mp3',
+            'description': 'md5:64136651e70263d7fc965fe8a0d61435',
+            'title': 'Relaxing Guitar Loop V5 by IdoBerg| Royalty-free Music',
         },
     }]
 
