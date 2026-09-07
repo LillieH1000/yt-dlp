@@ -29,11 +29,11 @@ class PixabayMusicIE(PixabayBaseIE):
     _TESTS = [{
         'url': 'https://pixabay.com/music/future-bass-no-copyright-music-537751/',
         'info_dict': {
-            'id': '2JsSZ7Gm2uP',
-            'ext': 'mp4',
-            'thumbnail': 'md5:d4498af48e15aae4839ce77b97d39550',
-            'description': 'md5:6a9f063c67c42f218e42eee7d0298bfd',
-            'title': 'Treble Malakai Bayoh sings a sublime Handel aria at Classic FM Live',
+            'id': '537751',
+            'ext': 'mp3',
+            'thumbnail': r're:^https?://.*\.png',
+            'description': 'md5:45435d2ca9aba2167f98c8ed61ec105a',
+            'title': 'No Copyright Music by SigmaMusicArt| Royalty-free Music',
         },
     }]
 
