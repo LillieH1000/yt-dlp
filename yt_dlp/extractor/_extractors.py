@@ -1420,6 +1420,7 @@ from .pinterest import (
 )
 from .pixabay import (
     PixabaySoundMusicIE,
+    PixabayVideosIE,
 )
 from .platzi import (
     PlatziCourseIE,

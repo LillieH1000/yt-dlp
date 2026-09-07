@@ -24,6 +24,17 @@ class PixabayBaseIE(InfoExtractor):
             'title': ('title', {str}),
         })
 
+    def _get_video_info(self, url, video_id):
+        webpage = self._download_webpage(url, video_id, headers=self._headers)
+        info = self._search_json_ld(webpage, video_id, expected_type='VideoObject')
+
+        return traverse_obj(info, {
+            'url': ('url', {url_or_none}),
+            'thumbnail': ('thumbnails', 0, 'url', {url_or_none}),
+            'description': ('description', {str}),
+            'title': ('title', {str}),
+        })
+
 
 class PixabaySoundMusicIE(PixabayBaseIE):
     _VALID_URL = r'https?://(?:www\.)?pixabay\.com/(?:music|sound-effects)/(?:[^/?#]+-)?(?P<id>\d+)'
@@ -68,5 +79,27 @@ class PixabaySoundMusicIE(PixabayBaseIE):
         return {
             'id': video_id,
             'vcodec': 'none',
+            **info,
+        }
+
+class PixabayVideosIE(PixabayBaseIE):
+    _VALID_URL = r'https?://(?:www\.)?pixabay\.com/videos/(?:[^/?#]+-)?(?P<id>\d+)'
+    _TESTS = [{
+        'url': 'https://pixabay.com/videos/geothermal-iceland-nature-steam-348057/',
+        'info_dict': {
+            'id': '348057',
+            'ext': 'mp4',
+            'thumbnail': r're:^https?://.*\.(?:png|jpg)',
+            'description': 'md5:52ab40c062e8787b95491d41fce8bd73',
+            'title': 'Geothermal, Iceland, Nature. Free Stock Video',
+        },
+    }]
+
+    def _real_extract(self, url):
+        video_id = self._match_id(url)
+        info = self._get_video_info(url, video_id)
+
+        return {
+            'id': video_id,
             **info,
         }
