@@ -31,7 +31,7 @@ class PixabayMusicIE(PixabayBaseIE):
         'info_dict': {
             'id': '537751',
             'ext': 'mp3',
-            'thumbnail': r're:^https?://.*\.png',
+            'thumbnail': r're:^https?://.*\(?:png|jpg)',
             'description': 'md5:45435d2ca9aba2167f98c8ed61ec105a',
             'title': 'No Copyright Music by SigmaMusicArt| Royalty-free Music',
         },
