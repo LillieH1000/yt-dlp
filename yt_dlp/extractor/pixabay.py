@@ -39,14 +39,10 @@ class PixabayMusicIE(PixabayBaseIE):
 
     def _real_extract(self, url):
         video_id = self._match_id(url)
-        meta = self._get_page_props(url, video_id)['videoData']
-
+        info = self._get_audio_info(url, video_id)
+        
         return {
             'id': video_id,
-            **traverse_obj(meta, {
-                'url': ('url', {url_or_none}),
-                'thumbnail': ('image', 'url', {url_or_none}),
-                'description': ('description', {str}),
-                'title': ('title', {str}),
-            }),
+            'vcodec': 'none',
+            **info,
         }
