@@ -13,10 +13,6 @@ class PixabayBaseIE(InfoExtractor):
         'Cookie': 'is_human=1;',
     }
 
-    def _get_page_props(self, url, video_id):
-        webpage = self._download_webpage(url, video_id)
-        return self._search_nextjs_data(webpage, video_id)['props']['pageProps']
-
     def _get_audio_info(self, url, video_id):
         webpage = self._download_webpage(url, video_id, headers=self._headers)
         info = self._search_json_ld(webpage, video_id, expected_type='AudioObject')
