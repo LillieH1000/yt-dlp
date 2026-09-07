@@ -25,7 +25,7 @@ class PixabayBaseIE(InfoExtractor):
         })
 
 class PixabayMusicIE(PixabayBaseIE):
-    _VALID_URL = r'https?://www\.globalplayer\.com/music/(?P<id>\w+)'
+    _VALID_URL = r'https?://(?:www\.)?pixabay\.com/music/(?:[^/?#]+-)?(?P<id>\d+)'
     _TESTS = [{
         'url': 'https://pixabay.com/music/future-bass-no-copyright-music-537751/',
         'info_dict': {
