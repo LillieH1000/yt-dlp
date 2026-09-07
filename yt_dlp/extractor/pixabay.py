@@ -71,6 +71,7 @@ class PixabaySoundMusicIE(PixabayBaseIE):
             **info,
         }
 
+
 class PixabayVideosIE(PixabayBaseIE):
     _VALID_URL = r'https?://(?:www\.)?pixabay\.com/videos/(?:[^/?#]+-)?(?P<id>\d+)'
     _TESTS = [{
