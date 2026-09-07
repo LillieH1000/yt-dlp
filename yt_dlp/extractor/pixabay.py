@@ -17,11 +17,16 @@ class PixabayBaseIE(InfoExtractor):
         webpage = self._download_webpage(url, video_id)
         return self._search_nextjs_data(webpage, video_id)['props']['pageProps']
 
-    @staticmethod
-    def _get_playback_url(data):
-        return traverse_obj(data, (
-            'playback', lambda _, v: v['canUse'] == 'true',
-            'url', {url_or_none}, any, {require('playback URL')}))
+    def _get_audio_info(self, url, video_id):
+        webpage = self._download_webpage(url, video_id, headers=self._headers)
+        info = self._search_json_ld(webpage, video_id, expected_type='AudioObject')
+
+        return traverse_obj(info, {
+            'url': ('url', {url_or_none}),
+            'thumbnail': ('thumbnails', 0, 'url', {url_or_none}),
+            'description': ('description', {str}),
+            'title': ('title', {str}),
+        })
 
 class PixabayMusicIE(PixabayBaseIE):
     _VALID_URL = r'https?://www\.globalplayer\.com/music/(?P<id>\w+)'
