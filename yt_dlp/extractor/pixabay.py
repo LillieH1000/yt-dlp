@@ -1,6 +1,6 @@
 from .common import InfoExtractor
 from ..utils import url_or_none
-from ..utils.traversal import require, traverse_obj
+from ..utils.traversal import traverse_obj
 
 
 class PixabayBaseIE(InfoExtractor):
