@@ -20,6 +20,7 @@ class PixabayBaseIE(InfoExtractor):
         return traverse_obj(info, {
             'url': ('url', {url_or_none}),
             'thumbnail': ('thumbnails', 0, 'url', {url_or_none}),
+            'view_count': ('view_count', {int}),
             'description': ('description', {str}),
             'title': ('title', {str}),
         })
@@ -35,6 +36,7 @@ class PixabaySoundMusicIE(PixabayBaseIE):
                 'id': '537751',
                 'ext': 'mp3',
                 'thumbnail': r're:^https?://.*\.(?:png|jpg)',
+                'view_count': int,
                 'description': 'md5:45435d2ca9aba2167f98c8ed61ec105a',
                 'title': 'No Copyright Music by SigmaMusicArt| Royalty-free Music',
             },
@@ -46,6 +48,7 @@ class PixabaySoundMusicIE(PixabayBaseIE):
                 'id': '518993',
                 'ext': 'mp3',
                 'thumbnail': r're:^https?://.*\.(?:png|jpg)',
+                'view_count': int,
                 'description': 'md5:9d3ae9314a08fa7c1ebfef797abd5068',
                 'title': 'Calm Inspiring Technology Logo (Short Version) by AleXZavesa| Royalty-free Music',
             },
@@ -56,6 +59,7 @@ class PixabaySoundMusicIE(PixabayBaseIE):
             'info_dict': {
                 'id': '245859',
                 'ext': 'mp3',
+                'view_count': int,
                 'description': 'md5:64136651e70263d7fc965fe8a0d61435',
                 'title': 'Relaxing Guitar Loop V5 by IdoBerg| Royalty-free Music',
             },
@@ -80,6 +84,7 @@ class PixabayVideosIE(PixabayBaseIE):
             'id': '348057',
             'ext': 'mp4',
             'thumbnail': r're:^https?://.*\.(?:png|jpg)',
+            'view_count': int,
             'description': 'md5:52ab40c062e8787b95491d41fce8bd73',
             'title': 'Geothermal, Iceland, Nature. Free Stock Video',
         },
