@@ -6,10 +6,6 @@ from ..utils.traversal import traverse_obj
 class PixabayBaseIE(InfoExtractor):
     # Cookie header is required or the request will 403
     _headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
-        'Accept-Language': 'en-US,en;q=0.9',
-        'Referer': 'https://pixabay.com/',
         'Cookie': 'is_human=1;',
     }
 
